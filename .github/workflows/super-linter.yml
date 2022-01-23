@@ -18,7 +18,7 @@ jobs:
         uses: github/super-linter/slim@v4
         env:
           ACTIONS_RUNNER_DEBUG: true
-          DEFAULT_BRANCH: $default-branch
+          DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_EDITORCONFIG: true
