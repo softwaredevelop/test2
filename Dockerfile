@@ -1,5 +1,4 @@
 FROM python:alpine
-LABEL maintainer "Jessie Frazelle <jess@linux.com>"
 
 # machine parsable metadata, for https://github.com/pycampers/dockapt
 LABEL registry-image="r.j3ss.co/couchpotato"
