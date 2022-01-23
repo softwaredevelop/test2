@@ -15,7 +15,7 @@ LABEL maintainer "Jessie Frazelle <jess@linux.com>"
 
 # machine parsable metadata, for https://github.com/pycampers/dockapt
 LABEL "registry_image"="r.j3ss.co/couchpotato"
-LAB ,k,,kEL "docker_run_flags"="-d \
+LABEL "docker_run_flags"="-d \
  	--restart always \
 	-p 5050:5050 \
  	-v /etc/localtime:/etc/localtime:ro \
