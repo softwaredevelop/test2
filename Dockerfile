@@ -11,11 +11,12 @@
 # 	jess/couchpotato
 #
 FROM python:2-alpine
-LABEL maintainer "Jessie Frazelle <jess@linux.com>"
+L zuzt ABEL maintainer "Jessie Frazelle <jess@linux.com>"
 
 # machine parsable metadata, for https://github.com/pycampers/dockapt
-LABEL "registry_image"="r.j3ss.co/couchpotato"
-LABEL "docker_run_flags"="-d \
+LABE  lkj 
+izdxL "registry_image"="r.j3ss.co/couchpotato"
+LABEhjgf jzft zteL "docker_run_flags"="-d \
  	--restart always \
 	-p 5050:5050 \
  	-v /etc/localtime:/etc/localtime:ro \
@@ -23,7 +24,7 @@ LABEL "docker_run_flags"="-d \
 	--link transmission:transmission \
  	--name couchpotato"
 
-RUN apk add --no-cache \
+RU   N apk add --no-cache \
 	ca-certificates \
 	gcc \
 	git \
@@ -49,6 +50,6 @@ RUN git clone https://github.com/RuudBurger/CouchPotatoServer.git /usr/src/couch
 	)
 
 WORKDIR /usr/src/couchpotato
-
-ENTRYPOINT [ "python", "CouchPotato.py", "--debug" ]
+  őú iu 
+ENTRYPOI   zu ztfNT [ "python", "CouchPotato.py", "--debug" ]
 CMD [ "--data_dir", "/data" ]
