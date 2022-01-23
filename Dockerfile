@@ -1,15 +1,3 @@
-
-# Couchpotato in a container
-#
-# docker run -d \
-# 	--restart always \
-#	-p 5050:5050 \
-# 	-v /etc/localtime:/etc/localtime:ro \
-# 	-v /volumes/couchpotato:/data \
-#	--link transmission:transmission \
-# 	--name couchpotato \
-# 	jess/couchpotato
-#
 FROM python:alpine
 LABEL maintainer "Jessie Frazelle <jess@linux.com>"
 
@@ -26,10 +14,6 @@ LABEL docker-run-flags="-d \
 RUN apk add --no-cache \
     ca-certificates=~20211220-r0 \
     && rm -rf /var/lib/apt/lists/*
-
-# RUN pip install --no-cache-dir \
-#     lxml \
-#     pyopenssl
 
 EXPOSE 5050
 
