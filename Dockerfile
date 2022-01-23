@@ -1,59 +1,54 @@
-# Run Chrome in a container
-#
-# docker run -it \
-#	--net host \ # may as well YOLO
-#	--cpuset-cpus 0 \ # control the cpu
-#	--memory 512mb \ # max memory it can use
-#	-v /tmp/.X11-unix:/tmp/.X11-unix \ # mount the X11 socket
-#	-e DISPLAY=unix$DISPLAY \
-#	-v $HOME/Downloads:/home/chrome/Downloads \
-#	-v $HOME/.config/google-chrome/:/data \ # if you want to save state
-#	--security-opt seccomp=$HOME/chrome.json \
-#	--device /dev/snd \ # so we have sound
-#   --device /dev/dri \
-#	-v /dev/shm:/dev/shm \
-#	--name chrome \
-#	jess/chrome
-#
-# You will want the custom seccomp profile:
-# 	wget https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json -O ~/chrome.json
 
-# Base docker image
-FROM debian:bullseye-slim
+# Couchpotato in a container
+#
+# docker run -d \
+# 	--restart always \
+#	-p 5050:5050 \
+# 	-v /etc/localtime:/etc/localtime:ro \
+# 	-v /volumes/couchpotato:/data \
+#	--link transmission:transmission \
+# 	--name couchpotato \
+# 	jess/couchpotato
+#
+FROM python:2-alpine
 LABEL maintainer "Jessie Frazelle <jess@linux.com>"
 
-# Install Chrome
-RUN apt-get update && apt-get install -y \
-	apt-transport-https \
+# machine parsable metadata, for https://github.com/pycampers/dockapt
+LABEL "registry_image"="r.j3ss.co/couchpotato"
+LABEL "docker_run_flags"="-d \
+ 	--restart always \
+	-p 5050:5050 \
+ 	-v /etc/localtime:/etc/localtime:ro \
+ 	-v /volumes/couchpotato:/data \
+	--link transmission:transmission \
+ 	--name couchpotato"
+
+RUN apk add --no-cache \
 	ca-certificates \
-	curl \
-	gnupg \
-	hicolor-icon-theme \
-	libcanberra-gtk* \
-	libgl1-mesa-dri \
-	libgl1-mesa-glx \
-	libpangox-1.0-0 \
-	libpulse0 \
-	libv4l-0 \
-	fonts-symbola \
-	--no-install-recommends \
-	&& curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
-	&& echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
-	&& apt-get update && apt-get install -y \
-	google-chrome-stable \
-	--no-install-recommends \
-	&& apt-get purge --auto-remove -y curl \
+	gcc \
+	git \
+	libffi-dev \
+	libxml2-dev \
+	libxslt-dev \
+	musl-dev \
+	openssl-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
-# Add chrome user
-RUN groupadd -r chrome && useradd -r -g chrome -G audio,video chrome \
-    && mkdir -p /home/chrome/Downloads && chown -R chrome:chrome /home/chrome
+RUN pip install \
+	lxml \
+	pyopenssl
 
-COPY local.conf /etc/fonts/local.conf
+EXPOSE 5050
 
-# Run Chrome as non privileged user
-USER chrome
+ENV COUCHPOTATO_VERSION master
 
-# Autorun chrome
-ENTRYPOINT [ "google-chrome" ]
-CMD [ "--user-data-dir=/data" ]
+RUN git clone https://github.com/RuudBurger/CouchPotatoServer.git /usr/src/couchpotato \
+	&& ( \
+		cd /usr/src/couchpotato \
+		&& git checkout "${COUCHPOTATO_VERSION}" \
+	)
+
+WORKDIR /usr/src/couchpotato
+
+ENTRYPOINT [ "python", "CouchPotato.py", "--debug" ]
+CMD [ "--data_dir", "/data" ]
