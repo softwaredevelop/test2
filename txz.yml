@@ -12,7 +12,3 @@ trigger:
             inputs:
               versionSpec: "10.x"
             displayName: "Install Node.js"
-          - script: |
-              npm install
-            workingDirectory: "$(Build.Repository.LocalPath)/api"
-            displayName: "npm install"
