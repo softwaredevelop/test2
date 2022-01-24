@@ -2,9 +2,13 @@ name: Lint Code Base
 
 on:
   push:
-    branches: main
+    branches:
+      - "main"
+      - "${{ github.actor }}/issue**"
   pull_request:
-    branches: main
+    branches:
+      - "main"
+
 jobs:
   run-lint:
     runs-on: ubuntu-latest
