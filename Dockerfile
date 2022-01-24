@@ -1,7 +1,5 @@
 FROM python:alpine
 
-# machine parsable metadata, for https://github.com/pycampers/dockapt
-LABEL registry-image="r.j3ss.co/couchpotato"
 LABEL docker-run-flags="-d \
     --restart always \
     -p 5050:5050 \
