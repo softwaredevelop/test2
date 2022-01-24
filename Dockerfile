@@ -12,8 +12,6 @@ RUN apk add --no-cache \
     ca-certificates=~20211220-r0 \
     && rm -rf /var/lib/apt/lists/*
 
-EXPOSE 5050
-
 ENV COUCHPOTATO_VERSION master
 
 WORKDIR /usr/src/couchpotato
