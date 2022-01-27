@@ -1,2 +1,1 @@
-ARG VARIANT=stable-slim
-FROM docker.io/library/debian:$VARIANT
+FROM docker.io/library/debian:stable-slim
