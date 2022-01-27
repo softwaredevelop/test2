@@ -4,13 +4,18 @@ on:
   push:
     branches:
       - "main"
-      - "issue/**"
+    paths-ignore:
+      - "Containerfile"
+      - "Dockerfile"
   pull_request:
     branches:
       - "main"
-
+    paths-ignore:
+      - "Containerfile"
+      - "Dockerfile"
 jobs:
-  run-lint:
+  lint:
+    name: Lint Code Base
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -18,7 +23,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Lint Code Base
+      - name: Super Linter
         uses: github/super-linter/slim@v4
         env:
           ACTIONS_RUNNER_DEBUG: true
@@ -26,5 +31,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_EDITORCONFIG: true
-          VALIDATE_DOCKERFILE_HADOLINT: true
           VALIDATE_GITHUB_ACTIONS: true
+          VALIDATE_YAML: true
