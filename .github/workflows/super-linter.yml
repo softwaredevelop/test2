@@ -4,13 +4,13 @@ on:
   push:
     branches:
       - "main"
-    paths:
+    paths-ignore:
       - "Containerfile"
       - "Dockerfile"
   pull_request:
     branches:
       - "main"
-    paths:
+    paths-ignore:
       - "Containerfile"
       - "Dockerfile"
 
