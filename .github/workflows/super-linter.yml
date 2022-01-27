@@ -4,10 +4,15 @@ on:
   push:
     branches:
       - "main"
-      - "issue/**"
+    paths:
+      - "Containerfile"
+      - "Dockerfile"
   pull_request:
     branches:
       - "main"
+    paths:
+      - "Containerfile"
+      - "Dockerfile"
 
 jobs:
   run-lint:
