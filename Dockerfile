@@ -9,6 +9,6 @@ RUN apt-get update \
     hello=2.10-2 \
     && apt-get clean && rm -fr /var/lib/apt/lists/*
 
-CMD [ "hello" ]
 EXPOSE 5050
 
+CMD [ "hello" ]
