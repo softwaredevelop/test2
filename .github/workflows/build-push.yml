@@ -54,4 +54,4 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.NAMESPACE }}/test2:latest
+            ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ secrets.NAMESPACE }}/test2:latest
