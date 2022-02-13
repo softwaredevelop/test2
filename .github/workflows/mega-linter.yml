@@ -31,9 +31,11 @@ jobs:
         id: ml
         uses: megalinter/megalinter@v5
         env:
-          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ENABLE: ACTION,LATEX
+          SHOW_ELAPSED_TIME: true
+          SHOW_SKIPPED_LINTERS: false
+          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          ENABLE: ACTION,EDITORCONFIG,LATEX
           TAP_REPORTER: false
           CONFIG_REPORTER: false
           EMAIL_REPORTER: false
