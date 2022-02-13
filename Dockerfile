@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
     && apt-get install --no-install-recommends --assume-yes \
-    hello=2.10-2 \
+    hello \
     && apt-get clean && rm -fr /var/lib/apt/lists/*
 
 EXPOSE 5050
