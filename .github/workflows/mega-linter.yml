@@ -28,7 +28,6 @@ jobs:
           fetch-depth: 0
 
       - name: MegaLinter
-        id: ml
         uses: megalinter/megalinter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
