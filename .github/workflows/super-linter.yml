@@ -49,3 +49,4 @@ jobs:
           VALIDATE_GITHUB_ACTIONS: true
           VALIDATE_LATEX: true
           VALIDATE_BASH: true
+          VALIDATE_BASH_EXEC: true
