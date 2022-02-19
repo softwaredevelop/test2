@@ -3,12 +3,19 @@ name: Containerfile Lint
 
 on:
   push:
+    branches:
+      - "main"
+    paths:
+      - "Containerfile"
+      - "Dockerfile"
+      - "Dockerfile.*"
   pull_request:
     branches:
       - "main"
     paths:
       - "Containerfile"
       - "Dockerfile"
+      - "Dockerfile.*"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -33,4 +40,4 @@ jobs:
 
       - uses: hadolint/hadolint-action@v1.6.0
         with:
-          dockerfile: Dockerfile
+          dockerfile: Dockerfile.test
