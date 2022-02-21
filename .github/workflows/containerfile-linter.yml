@@ -46,16 +46,32 @@ jobs:
     name: Scan config files for vulnerabilities
     runs-on: ubuntu-latest
     container:
-      image: docker.io/aquasec/trivy:0.23.0
-      # options: --volume ${{ github.workspace }}:/volume
+      image: docker.io/aquasec/trivy:latest
       volumes:
         - "${{ github.workspace }}:/volume"
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Scan config Containerfiles for vulnerabilities
         run: |
           trivy config --file-patterns "dockerfile:Containerfile" /volume
-          cd /volume
           pwd
-          ls -la
+          ls -la /volume
+
+  trivy:
+    name: Trivy vulnerability scanner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: "config"
+          hide-progress: false
+          format: "table"
+          # exit-code: "1"
+          # ignore-unfixed: true
+          severity: "CRITICAL,HIGH"
