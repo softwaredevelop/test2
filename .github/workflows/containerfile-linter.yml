@@ -52,4 +52,4 @@ jobs:
     steps:
       - name: Scan config Containerfiles for vulnerabilities
         run: |
-          config --file-patterns "dockerfile:Containerfile" /volume
+          trivy config --file-patterns "dockerfile:Containerfile" /volume
