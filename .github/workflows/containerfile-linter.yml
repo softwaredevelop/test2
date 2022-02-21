@@ -55,4 +55,4 @@ jobs:
           # trivy config --file-patterns "dockerfile:Containerfile" /volume
           cd /volume
           pwd
-          ls -la
+          ls -la /root
