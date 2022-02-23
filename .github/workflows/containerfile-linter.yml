@@ -65,6 +65,15 @@ jobs:
         # shell: bash
         run: |
           echo "Hello World!"
+          # gh --repo "$GITHUB_REPOSITORY" issue list
+
+  issue:
+    name: Issue create
+    runs-on: ubuntu-latest
+    steps:
+      - name: Issue
+        run: |
+          # echo "Hello World!"
           gh --repo "$GITHUB_REPOSITORY" issue list
 
   # trivy:
