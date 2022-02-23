@@ -37,6 +37,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - uses: hadolint/hadolint-action@v1.6.0
         with:
@@ -52,6 +54,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Scan config Containerfiles for vulnerabilities
         run: |
@@ -63,6 +67,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
