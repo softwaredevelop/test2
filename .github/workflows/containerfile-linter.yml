@@ -61,21 +61,27 @@ jobs:
         run: |
           trivy config --skip-files "Dockerfile.test" --severity HIGH,CRITICAL --file-patterns "dockerfile:Containerfile" /volume
 
-  trivy:
-    name: Trivy vulnerability scanner
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      - name: Issue create
+        shell: bash
+        run: |
+          echo "Hello World!"
+          gh --repo "$GITHUB_REPOSITORY" issue list
 
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: "config"
-          hide-progress: false
-          format: "table"
-          # exit-code: "1"
-          # ignore-unfixed: true
-          severity: "CRITICAL,HIGH"
+  # trivy:
+  #   name: Trivy vulnerability scanner
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Run Trivy vulnerability scanner
+  #       uses: aquasecurity/trivy-action@master
+  #       with:
+  #         scan-type: "config"
+  #         hide-progress: false
+  #         format: "table"
+  #         # exit-code: "1"
+  #         # ignore-unfixed: true
+  #         severity: "CRITICAL,HIGH"
