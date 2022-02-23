@@ -75,6 +75,8 @@ jobs:
         run: |
           # echo "Hello World!"
           gh --repo "$GITHUB_REPOSITORY" issue list
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # trivy:
   #   name: Trivy vulnerability scanner
