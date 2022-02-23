@@ -75,6 +75,7 @@ jobs:
         run: |
           # echo "Hello World!"
           gh --repo "$GITHUB_REPOSITORY" issue list
+          gh --repo "$GITHUB_REPOSITORY" issue create --title "vulnerabilities" --label "vulnerability" --assignee "$INPUT_ASSIGNEE"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
