@@ -62,10 +62,10 @@ jobs:
           trivy config --skip-files "Dockerfile.test" --severity HIGH,CRITICAL --file-patterns "dockerfile:Containerfile" /volume
 
       - name: Issue create
-        shell: bash
+        # shell: bash
         run: |
           echo "Hello World!"
-          gh --repo "$GITHUB_REPOSITORY" issue list
+          # gh --repo "$GITHUB_REPOSITORY" issue list
 
   # trivy:
   #   name: Trivy vulnerability scanner
