@@ -65,7 +65,7 @@ jobs:
         # shell: bash
         run: |
           echo "Hello World!"
-          # gh --repo "$GITHUB_REPOSITORY" issue list
+          gh --repo "$GITHUB_REPOSITORY" issue list
 
   # trivy:
   #   name: Trivy vulnerability scanner
