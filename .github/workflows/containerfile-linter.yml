@@ -71,7 +71,12 @@ jobs:
     name: Issue create
     runs-on: ubuntu-latest
     steps:
-      - name: Issue
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Issue create
         run: |
           # echo "Hello World!"
           # gh --repo "$GITHUB_REPOSITORY" issue list
