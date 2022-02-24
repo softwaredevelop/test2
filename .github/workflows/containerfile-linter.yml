@@ -74,7 +74,7 @@ jobs:
       - name: Issue
         run: |
           # echo "Hello World!"
-          gh --repo "$GITHUB_REPOSITORY" issue list
+          # gh --repo "$GITHUB_REPOSITORY" issue list
           gh issue create --title "vulnerabilities" --body "vulnerability" --label "vulnerability"
         shell: bash
         env:
