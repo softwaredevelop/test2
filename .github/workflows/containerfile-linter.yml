@@ -96,11 +96,14 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const result = github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-            });
-            console.log(result)
+            # const result = github.rest.issues.listForRepo({
+            #   owner: context.repo.owner,
+            #   repo: context.repo.repo,
+            # });
+            # console.log(result)
+            const execa = require('execa')
+            const { stdout } = await execa('echo', ['hello', 'world'])
+            console.log(stdout)
 
   # trivy:
   #   name: Trivy vulnerability scanner
