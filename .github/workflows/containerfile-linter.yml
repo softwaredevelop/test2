@@ -91,7 +91,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            octokit.rest.issues.listForRepo({
+            github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
             });
