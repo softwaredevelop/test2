@@ -67,8 +67,24 @@ jobs:
           echo "Hello World!"
           # gh --repo "$GITHUB_REPOSITORY" issue list
 
-  issue:
-    name: Issue create
+  # issue:
+  #   name: Issue create
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Issue create
+  #       run: |
+  #         gh issue create --title "vulnerabilities" --body "vulnerability" --label "vulnerability"
+  #       shell: bash
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  issue_list:
+    # name: Issue list
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -76,17 +92,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Issue create
-        run: |
-          gh issue create --title "vulnerabilities" --body "vulnerability" --label "vulnerability"
-        shell: bash
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  issue_list:
-    # name: Issue list
-    runs-on: ubuntu-latest
-    steps:
       - name: Issue list
         uses: actions/github-script@v6
         with:
