@@ -105,6 +105,16 @@ jobs:
             const { stdout } = await execa('echo', ['hello', 'world'])
             console.log(stdout)
 
+      - name: Issue list2
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: "vulnerability",
+            });
+
   # trivy:
   #   name: Trivy vulnerability scanner
   #   runs-on: ubuntu-latest
