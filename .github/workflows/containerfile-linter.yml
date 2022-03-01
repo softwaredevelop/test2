@@ -67,21 +67,35 @@ jobs:
           echo "Hello World!"
           # gh --repo "$GITHUB_REPOSITORY" issue list
 
-  # issue:
-  #   name: Issue create
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 0
+  issue:
+    name: Issue create
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-  #     - name: Issue create
-  #       run: |
-  #         gh issue create --title "vulnerabilities" --body "vulnerability" --label "vulnerability"
-  #       shell: bash
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Issue create
+        run: |
+          body=$(
+            cat << EOF | envsubst
+          ## Title
+          # ${title}
+          ## Description
+          # ${description}
+          ## Severity
+          # ${severity}
+          ## Primary URL
+          # ${primary_url}
+          ## References
+          # ${references}
+          EOF
+          )
+          gh issue create --title "vulnerabilities" --body "$body" --label "vulnerability"
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   issue_list:
     # name: Issue list
@@ -105,22 +119,22 @@ jobs:
       #       const { stdout } = await execa('echo', ['hello', 'world'])
       #       console.log(stdout)
 
-      - name: Issue list2
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.create({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            title: "vulnerability",
-            });
-            const result = github.rest.issues.listForRepo({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            });
-            console.log(result)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Issue list2
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       github.rest.issues.create({
+      #       owner: context.repo.owner,
+      #       repo: context.repo.repo,
+      #       title: "vulnerability",
+      #       });
+      #       const result = github.rest.issues.listForRepo({
+      #       owner: context.repo.owner,
+      #       repo: context.repo.repo,
+      #       });
+      #       console.log(result)
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # trivy:
   #   name: Trivy vulnerability scanner
