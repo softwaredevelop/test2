@@ -92,18 +92,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Issue list
-        uses: actions/github-script@v6
-        with:
-          script: |
-            # const result = github.rest.issues.listForRepo({
-            #   owner: context.repo.owner,
-            #   repo: context.repo.repo,
-            # });
-            # console.log(result)
-            const execa = require('execa')
-            const { stdout } = await execa('echo', ['hello', 'world'])
-            console.log(stdout)
+      # - name: Issue list
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       # const result = github.rest.issues.listForRepo({
+      #       #   owner: context.repo.owner,
+      #       #   repo: context.repo.repo,
+      #       # });
+      #       # console.log(result)
+      #       const execa = require('execa')
+      #       const { stdout } = await execa('echo', ['hello', 'world'])
+      #       console.log(stdout)
 
       - name: Issue list2
         uses: actions/github-script@v6
@@ -114,6 +114,8 @@ jobs:
             repo: context.repo.repo,
             title: "vulnerability",
             });
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # trivy:
   #   name: Trivy vulnerability scanner
