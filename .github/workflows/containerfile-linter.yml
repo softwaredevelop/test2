@@ -114,10 +114,11 @@ jobs:
             repo: context.repo.repo,
             title: "vulnerability",
             });
-            github.rest.issues.listForRepo({
+            const result = github.rest.issues.listForRepo({
             owner: context.repo.owner,
             repo: context.repo.repo,
             });
+            console.log(result)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
