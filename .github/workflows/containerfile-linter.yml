@@ -114,6 +114,10 @@ jobs:
             repo: context.repo.repo,
             title: "vulnerability",
             });
+            github.rest.issues.listForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            });
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
