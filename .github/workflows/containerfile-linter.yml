@@ -92,10 +92,11 @@ jobs:
           # ${references}
           EOF
           )
-          gh issue create --title "vulnerabilities" --body "$body" --label "vulnerability"
+          gh issue create --title "vulnerabilities" --body "$PR_NUMBER" --label "vulnerability"
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.number }}
 
   issue_list:
     # name: Issue list
