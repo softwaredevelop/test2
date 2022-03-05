@@ -78,20 +78,11 @@ jobs:
 
       - name: Issue create
         run: |
-          # body=$(
-          #   cat << EOF | envsubst
-          # ## Title
-          # # ${title}
-          # ## Description
-          # # ${description}
-          # ## Severity
-          # # ${severity}
-          # ## Primary URL
-          # # ${primary_url}
-          # ## References
-          # # ${references}
-          # EOF
-          # )
+          body=$(
+            cat << EOF | envsubst
+          ${{ github.event.pull_request.number }}
+          EOF
+          )
           gh issue create --title "vulnerabilities" --body "$body" --label "vulnerability"
           echo "PR number = ${{ github.event.pull_request.number }}"
         shell: bash
