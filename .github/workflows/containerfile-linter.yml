@@ -93,7 +93,7 @@ jobs:
     name: Issue list
     runs-on: ubuntu-latest
     needs: scan
-    if: ${{ success() }}
+    if: ${{ failure() }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
