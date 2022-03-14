@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "@textlint-rule/no-invalid-control-character": true,
+    "@textlint-rule/no-unmatched-pair": true,
+    "doubled-spaces": true
+    }
+}
