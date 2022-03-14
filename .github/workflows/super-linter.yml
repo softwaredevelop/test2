@@ -50,3 +50,4 @@ jobs:
           VALIDATE_LATEX: true
           VALIDATE_BASH: true
           VALIDATE_BASH_EXEC: true
+          VALIDATE_NATURAL_LANGUAGE: true
