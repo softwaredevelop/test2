@@ -16,3 +16,6 @@ indent_size = 2
 
 [*.sh]
 indent_size = 2
+
+[.textlintrc]
+indent_size = 2
