@@ -1,0 +1,8 @@
+But, A is ~.
+So, A is ~.
+But, A is ~.
+
+"Ich ♥ Bücher",
+        "new line \n",
+        "tab \t",
+        "rn \r\n",
