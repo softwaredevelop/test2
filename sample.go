@@ -1,26 +1,15 @@
-// Package sample is used as test input for golangci action.
-package sample
+package main
 
-import (
-	"crypto/md5"
-	"encoding/hex"
-	"errors"
-)
+func main() {}
 
-// Hash~
-func Hash(data string) string {
-	retError()
-	retError2()
+// there are no such linter "deaccode", it's a typo, but `nolintlint` linter will show warning (perfectly fine).
+// and this is braks vsc-go
 
-	h := md5.New()
-	h.Write([]byte(data))
-	return hex.EncodeToString(h.Sum(nil))
+//nolint:deacdcode
+func add(a, b int) int {
+	a += 10
+	b += 11
+	return a + b
 }
 
-func retError() error {
-	return errors.New("err")
-}
-
-func retError2() error {
-	return errors.New("err2")
-}
+func nouse() {}
