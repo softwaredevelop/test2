@@ -11,6 +11,7 @@ import (
 func Hash(data string) string {
 	retError()
 	retError2()
+	retError3()
 
 	h := md5.New()
 	h.Write([]byte(data))
@@ -23,4 +24,8 @@ func retError() error {
 
 func retError2() error {
 	return errors.New("err2")
+}
+
+func retError3() error {
+	return errors.New("err3")
 }
