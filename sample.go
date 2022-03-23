@@ -6,7 +6,7 @@ func main() {}
 // and this is braks vsc-go
 
 //nolint:deacdcode
-func add(a, b int) int {
+func addd(a, b int) int {
 	a += 10
 	b += 11
 	return a + b
