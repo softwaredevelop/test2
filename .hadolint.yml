@@ -4,3 +4,4 @@ trustedRegistries:
 
 ignored:
   - DL3008
+  - SC1091
