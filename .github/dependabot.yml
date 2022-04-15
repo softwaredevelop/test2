@@ -6,7 +6,7 @@ updates:
     schedule:
       interval: "daily"
       time: "00:00"
-      timezone: "${{secrets.TIMEZONE}}"
+      timezone: ${{secrets.TIMEZONE}}
     labels:
       - "docker dependencies"
 
@@ -16,6 +16,6 @@ updates:
       interval: "daily"
       day: "friday"
       time: "00:00"
-      timezone: "${{secrets.TIMEZONE}}"
+      timezone: ${{secrets.TIMEZONE}}
     labels:
       - "github-actions dependencies"
