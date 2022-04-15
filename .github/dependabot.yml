@@ -6,7 +6,7 @@ updates:
     schedule:
       interval: "daily"
       time: "00:00"
-      timezone: ${{secrets.TIMEZONE1}}/${{secrets.TIMEZONE2}}
+      timezone: "${{secrets.TIMEZONE}}"
     labels:
       - "docker dependencies"
 
