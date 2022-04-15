@@ -16,6 +16,6 @@ updates:
       interval: "daily"
       day: "friday"
       time: "00:00"
-      timezone: "Europe/Berlin"
+      timezone: "${{secrets.TIMEZONE}}"
     labels:
       - "github-actions dependencies"
