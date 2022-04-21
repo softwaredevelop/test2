@@ -4,7 +4,6 @@
 [<img align="center" src="/acti_comm.svg" width="49%"/>](/acti_comm.svg)
 
 [<img align="center" src="/iso_calender.svg" width="49%"/>](/iso_calender.svg)
-
 [<img align="center" src="/issue_pr_lang.svg" width="49%"/>](/issue_pr_lang.svg)
 
 [<img align="center" src="/github-habits.svg" width="49%"/>](/github-habits.svg)
