@@ -27,7 +27,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN apt-get update \
+apt-get update \
     && apt-get install --no-install-recommends --assume-yes \
     curl \
     && curl -s "https://get.sdkman.io" | bash \
