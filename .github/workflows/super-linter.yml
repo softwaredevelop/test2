@@ -31,6 +31,7 @@ jobs:
           concurrent_skipping: never
 
   run-lint:
+    name: Lint Code Base
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
