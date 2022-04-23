@@ -23,9 +23,9 @@ jobs:
 
   achievements:
     runs-on: ubuntu-latest
+    name: Achievements
     steps:
-      - name: Achievements
-        uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@latest
         with:
           filename: achievements.svg
           token: ${{ secrets.METRICS_SECRET }}
@@ -40,9 +40,9 @@ jobs:
 
   github-metrics:
     runs-on: ubuntu-latest
+    name: Github-metrics
     steps:
-      - name: Github-metrics
-        uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@latest
         with:
           filename: header.svg
           # You'll need to setup a personal token in your secrets.
@@ -58,9 +58,9 @@ jobs:
 
   lines:
     runs-on: ubuntu-latest
+    name: Lines
     steps:
-      - name: Lines
-        uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@latest
         with:
           filename: lines-of-code.svg
           token: ${{ secrets.METRICS_SECRET }}
@@ -70,9 +70,9 @@ jobs:
 
   acti_comm:
     runs-on: ubuntu-latest
+    name: Acti_comm
     steps:
-      - name: Acti_comm
-        uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@latest
         with:
           filename: acti_comm.svg
           # You'll need to setup a personal token in your secrets.
@@ -88,9 +88,9 @@ jobs:
 
   iso_calender:
     runs-on: ubuntu-latest
+    name: Iso_calender
     steps:
-      - name: Iso_calender
-        uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@latest
         with:
           filename: iso_calender.svg
           # You'll need to setup a personal token in your secrets.
@@ -108,9 +108,9 @@ jobs:
 
   habits:
     runs-on: ubuntu-latest
+    name: Habits
     steps:
-      - name: Habits
-        uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@latest
         with:
           filename: github-habits.svg
           token: ${{ secrets.METRICS_SECRET }}
@@ -127,9 +127,9 @@ jobs:
 
   issue_pr_lang:
     runs-on: ubuntu-latest
+    name: Issue_pr_lang
     steps:
-      - name: Issue_pr_lang
-        uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@latest
         with:
           filename: issue_pr_lang.svg
           # You'll need to setup a personal token in your secrets.
@@ -147,9 +147,9 @@ jobs:
 
   repositories:
     runs-on: ubuntu-latest
+    name: Repositories
     steps:
-      - name: Repositories
-        uses: lowlighter/metrics@latest
+      - uses: lowlighter/metrics@latest
         with:
           filename: repositories.svg
           # You'll need to setup a personal token in your secrets.
