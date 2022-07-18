@@ -34,3 +34,9 @@ RUN apt-get update \
     # shellcheck source $HOME/.sdkman/bin/sdkman-init.sh
     && source "$HOME/.sdkman/bin/sdkman-init.sh" \
     && apt-get clean && rm -fr /var/lib/apt/lists/*
+
+RUN apt-get update \
+    && apt-get install --no-install-recommends --assume-yes \
+    apt-utils \
+    hello \
+    && apt-get clean && rm -fr /var/lib/apt/lists/*
