@@ -58,9 +58,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Scan config Containerfiles for vulnerabilities
-        run: |
-          trivy config --exit-code 0 --skip-files "Dockerfile.test" --severity HIGH --file-patterns "dockerfile:Containerfile" /volume
+      - name: Trivy vulnerability scanner in IaC mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          format: "table"
+          ignore-unfixed: true
+          scan-type: "config"
+          severity: "CRITICAL,HIGH"
+      # - name: Scan config Containerfiles for vulnerabilities
+      #   run: |
+      #     trivy config --exit-code 0 --skip-files "Dockerfile.test" --severity HIGH --file-patterns "dockerfile:Containerfile" /volume
 
       # - name: Issue create
       #   # shell: bash
