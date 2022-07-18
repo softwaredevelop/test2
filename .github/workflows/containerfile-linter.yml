@@ -6,16 +6,18 @@ on:
     branches:
       - "main"
     paths:
+      - "/workflows/.devcontainer/Containerfile.*"
       - "Containerfile"
-      - "Dockerfile"
       - "Dockerfile.*"
+      - "Dockerfile"
   pull_request:
     branches:
       - "main"
     paths:
+      - "/workflows/.devcontainer/Containerfile.*"
       - "Containerfile"
-      - "Dockerfile"
       - "Dockerfile.*"
+      - "Dockerfile"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
