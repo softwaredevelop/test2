@@ -16,10 +16,10 @@ on:
       - "main"
     paths:
       - "/.devcontainer/Containerfile"
-      - "/workflows/.devcontainer/Containerfile.*"
-      - "Containerfile"
-      - "Dockerfile.*"
-      - "Dockerfile"
+      # - "/workflows/.devcontainer/Containerfile.*"
+      # - "Containerfile"
+      # - "Dockerfile.*"
+      # - "Dockerfile"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
