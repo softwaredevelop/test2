@@ -1,0 +1,7 @@
+ARG VARIANT=focal
+FROM docker.io/library/ubuntu:$VARIANT
+
+RUN apt-get update; \
+    apt-get install --no-install-recommends --assume-yes \
+    hello; \
+    apt-get clean && rm -fr /var/lib/apt/lists/*
