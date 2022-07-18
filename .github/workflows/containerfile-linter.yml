@@ -65,6 +65,7 @@ jobs:
           ignore-unfixed: true
           scan-type: "config"
           severity: "CRITICAL,HIGH"
+          skip-files: "Containerfile,Containerfile.test"
       # - name: Scan config Containerfiles for vulnerabilities
       #   run: |
       #     trivy config --exit-code 0 --skip-files "Dockerfile.test" --severity HIGH --file-patterns "dockerfile:Containerfile" /volume
