@@ -50,38 +50,38 @@ jobs:
         with:
           dockerfile: Containerfile
 
-  scan:
-    needs: lint
-    name: Scan config files for vulnerabilities
-    runs-on: ubuntu-latest
-    container:
-      image: docker.io/aquasec/trivy:latest
-      volumes:
-        - "${{ github.workspace }}:/volume"
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+  # scan:
+  #   needs: lint
+  #   name: Scan config files for vulnerabilities
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: docker.io/aquasec/trivy:latest
+  #     volumes:
+  #       - "${{ github.workspace }}:/volume"
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
 
-      - name: Trivy vulnerability scanner in IaC mode
-        uses: aquasecurity/trivy-action@master
-        with:
-          format: "table"
-          ignore-unfixed: true
-          scan-type: "config"
-          severity: "CRITICAL,HIGH"
-          skip-files: "Containerfile,.devcontainer/Containerfile,.devcontainer/Containerfile.*"
-          trivyignores: ".trivyignore"
-      # - name: Scan config Containerfiles for vulnerabilities
-      #   run: |
-      #     trivy config --exit-code 0 --skip-files "Dockerfile.test" --severity HIGH --file-patterns "dockerfile:Containerfile" /volume
+  #     - name: Trivy vulnerability scanner in IaC mode
+  #       uses: aquasecurity/trivy-action@master
+  #       with:
+  #         format: "table"
+  #         ignore-unfixed: true
+  #         scan-type: "config"
+  #         severity: "CRITICAL,HIGH"
+  #         skip-files: "Containerfile,.devcontainer/Containerfile,.devcontainer/Containerfile.*"
+  #         trivyignores: ".trivyignore"
+  # - name: Scan config Containerfiles for vulnerabilities
+  #   run: |
+  #     trivy config --exit-code 0 --skip-files "Dockerfile.test" --severity HIGH --file-patterns "dockerfile:Containerfile" /volume
 
-      # - name: Issue create
-      #   # shell: bash
-      #   run: |
-      #     echo "Hello World!"
-      #     # gh --repo "$GITHUB_REPOSITORY" issue list
+  # - name: Issue create
+  #   # shell: bash
+  #   run: |
+  #     echo "Hello World!"
+  #     # gh --repo "$GITHUB_REPOSITORY" issue list
 
   # issue:
   #   name: Issue create
@@ -105,50 +105,50 @@ jobs:
   #       env:
   #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  issue_list:
-    name: Issue list
-    runs-on: ubuntu-latest
-    needs: scan
-    if: ${{ failure() }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+  # issue_list:
+  #   name: Issue list
+  #   runs-on: ubuntu-latest
+  #   needs: scan
+  #   if: ${{ failure() }}
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
 
-      - name: Hello
-        run: |
-          echo "Hello World!"
+  #     - name: Hello
+  #       run: |
+  #         echo "Hello World!"
 
-      # - name: Issue list
-      #   uses: actions/github-script@v6
-      #   with:
-      #     script: |
-      #       # const result = github.rest.issues.listForRepo({
-      #       #   owner: context.repo.owner,
-      #       #   repo: context.repo.repo,
-      #       # });
-      #       # console.log(result)
-      #       const execa = require('execa')
-      #       const { stdout } = await execa('echo', ['hello', 'world'])
-      #       console.log(stdout)
+  # - name: Issue list
+  #   uses: actions/github-script@v6
+  #   with:
+  #     script: |
+  #       # const result = github.rest.issues.listForRepo({
+  #       #   owner: context.repo.owner,
+  #       #   repo: context.repo.repo,
+  #       # });
+  #       # console.log(result)
+  #       const execa = require('execa')
+  #       const { stdout } = await execa('echo', ['hello', 'world'])
+  #       console.log(stdout)
 
-      # - name: Issue list2
-      #   uses: actions/github-script@v6
-      #   with:
-      #     script: |
-      #       github.rest.issues.create({
-      #       owner: context.repo.owner,
-      #       repo: context.repo.repo,
-      #       title: "vulnerability",
-      #       });
-      #       const result = github.rest.issues.listForRepo({
-      #       owner: context.repo.owner,
-      #       repo: context.repo.repo,
-      #       });
-      #       console.log(result)
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  # - name: Issue list2
+  #   uses: actions/github-script@v6
+  #   with:
+  #     script: |
+  #       github.rest.issues.create({
+  #       owner: context.repo.owner,
+  #       repo: context.repo.repo,
+  #       title: "vulnerability",
+  #       });
+  #       const result = github.rest.issues.listForRepo({
+  #       owner: context.repo.owner,
+  #       repo: context.repo.repo,
+  #       });
+  #       console.log(result)
+  #   env:
+  #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # trivy:
   #   name: Trivy vulnerability scanner
