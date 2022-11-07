@@ -6,12 +6,12 @@ on:
     branches:
       - "main"
     paths:
-      - "Dockerfile.test"
+      - ".github/workflows/build-push.yml"
   pull_request:
     branches:
       - "main"
     paths:
-      - "Dockerfile.test"
+      - ".github/workflows/build-push.yml"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
