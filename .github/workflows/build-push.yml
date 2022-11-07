@@ -5,6 +5,8 @@ on:
   workflow_run:
     workflows: [Containerfile Lint]
     types: [completed]
+    paths:
+      - "Dockerfile.test"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
