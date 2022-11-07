@@ -8,6 +8,7 @@ on:
     paths-ignore:
       - "Containerfile"
       - "Dockerfile"
+      - "Dockerfile.test"
       - ".github/workflows/build-push.yml"
   pull_request:
     branches:
@@ -15,6 +16,7 @@ on:
     paths-ignore:
       - "Containerfile"
       - "Dockerfile"
+      - "Dockerfile.test"
       - ".github/workflows/build-push.yml"
 
 concurrency:
