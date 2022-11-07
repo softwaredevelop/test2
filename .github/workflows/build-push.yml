@@ -5,9 +5,6 @@ on:
   workflow_run:
     workflows: [Containerfile Lint]
     types: [completed]
-    # branches:
-    #   - "feature/**"
-    # - "main"
     paths:
       - "Dockerfile"
 
@@ -46,7 +43,6 @@ jobs:
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v3
         with:
-          context: .
           file: ./Dockerfile
           push: true
           tags: |
