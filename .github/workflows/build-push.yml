@@ -6,7 +6,8 @@ on:
     workflows: [Containerfile Lint]
     types: [completed]
     branches:
-      - "main"
+      - "feature/**"
+    #   - "main"
     # paths:
     #   - ".github/workflows/Dockerfile1.test"
 
