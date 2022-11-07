@@ -6,12 +6,12 @@ on:
     branches:
       - "main"
     paths:
-      - ".github/workflows/build-push.yml"
+      - ".github/workflows/*.yml"
   pull_request:
     branches:
       - "main"
     paths:
-      - ".github/workflows/build-push.yml"
+      - ".github/workflows/*.yml"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -29,14 +29,14 @@ jobs:
           concurrent_skipping: never
 
   actionlint:
-    name: actionlint
+    name: actionlint Workflow Linter
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: actionlint-bash
+      - name: actionlint
         run: |
           bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
           ./actionlint -color -ignore 'not available for workflow_run event'
