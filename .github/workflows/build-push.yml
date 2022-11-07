@@ -43,8 +43,8 @@ jobs:
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v3
         with:
-          # context: .
-          file: ./.github/workflows/Dockerfile1.test
+          context: ${{defaultContext}}:.github/workflows
+          file: ./Dockerfile1.test
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/test2:latest
