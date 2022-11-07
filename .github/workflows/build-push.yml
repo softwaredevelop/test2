@@ -5,8 +5,8 @@ on:
   workflow_run:
     workflows: [Containerfile Lint]
     types: [completed]
-    paths:
-      - "Dockerfile.test"
+    # paths:
+    #   - "Dockerfile.test"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -43,7 +43,8 @@ jobs:
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v3
         with:
-          file: ./Dockerfile.test
+          context: .
+          file: Dockerfile.test
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/test2:latest
