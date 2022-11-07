@@ -6,10 +6,10 @@ on:
     workflows: [Containerfile Lint]
     types: [completed]
     branches:
-      - "feature/**"
-    #   - "main"
-    # paths:
-    #   - ".github/workflows/Dockerfile1.test"
+      # - "feature/**"
+      - "main"
+    paths:
+      - "Dockerfile"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
