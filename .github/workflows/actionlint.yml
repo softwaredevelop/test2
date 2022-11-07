@@ -39,5 +39,5 @@ jobs:
       - name: actionlint-bash
         run: |
           bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
-          ./actionlint -color -ignore 'not available for workflow_run event'
+          ./actionlint -color
         shell: bash
