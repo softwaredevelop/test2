@@ -13,19 +13,19 @@ on:
       - "Dockerfile"
       # - "Dockerfile.test"
       # - ".github/workflows/Dockerfile1.test"
-  pull_request:
-    branches:
-      - "main"
-    paths:
-      # - ".devcontainer/Containerfile"
-      # - ".devcontainer/Containerfile.*"
-      # - "/.devcontainer/Containerfile*"
-      # - "/workflows/.devcontainer/Containerfile.*"
-      # - "Containerfile"
-      # - "Dockerfile.*"
-      - "Dockerfile"
-      # - "Dockerfile.test"
-      # - ".github/workflows/Dockerfile1.test"
+  # pull_request:
+  #   branches:
+  #     - "main"
+  #   paths:
+  # - ".devcontainer/Containerfile"
+  # - ".devcontainer/Containerfile.*"
+  # - "/.devcontainer/Containerfile*"
+  # - "/workflows/.devcontainer/Containerfile.*"
+  # - "Containerfile"
+  # - "Dockerfile.*"
+  # - "Dockerfile"
+  # - "Dockerfile.test"
+  # - ".github/workflows/Dockerfile1.test"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -42,21 +42,21 @@ jobs:
           cancel_others: true
           concurrent_skipping: never
 
-  lint:
-    name: Hadolint Action
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+  # lint:
+  #   name: Hadolint Action
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
 
-      - uses: hadolint/hadolint-action@v2.1.0
-        with:
-          dockerfile: Dockerfile
+  #     - uses: hadolint/hadolint-action@v2.1.0
+  #       with:
+  #         dockerfile: Dockerfile
 
   docker-hub:
     # if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    needs: lint
+    # needs: lint
     runs-on: ubuntu-latest
     environment: dockerhub
     steps:
@@ -75,6 +75,7 @@ jobs:
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v3
         with:
+          context: .
           file: ./Dockerfile
           push: true
           tags: |

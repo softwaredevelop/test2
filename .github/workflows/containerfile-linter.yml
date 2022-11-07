@@ -2,17 +2,17 @@
 name: Containerfile Lint
 
 on:
-  push:
-    branches:
-      - "main"
-    paths:
-      # - "/.devcontainer/Containerfile"
-      # - "/workflows/.devcontainer/Containerfile.*"
-      # - "Containerfile"
-      # - "Dockerfile.*"
-      - "Dockerfile"
-      - "Dockerfile.test"
-      - ".github/workflows/Dockerfile1.test"
+  # push:
+  #   branches:
+  #     - "main"
+  #   paths:
+  # - "/.devcontainer/Containerfile"
+  # - "/workflows/.devcontainer/Containerfile.*"
+  # - "Containerfile"
+  # - "Dockerfile.*"
+  # - "Dockerfile"
+  # - "Dockerfile.test"
+  # - ".github/workflows/Dockerfile1.test"
   pull_request:
     branches:
       - "main"
