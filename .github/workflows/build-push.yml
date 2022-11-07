@@ -44,7 +44,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: Dockerfile.test
+          file: /Dockerfile.test
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/test2:latest
