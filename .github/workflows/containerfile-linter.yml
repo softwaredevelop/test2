@@ -10,7 +10,7 @@ on:
       # - "/workflows/.devcontainer/Containerfile.*"
       # - "Containerfile"
       # - "Dockerfile.*"
-      # - "Dockerfile"
+      - "Dockerfile"
       - "Dockerfile.test"
       - ".github/workflows/Dockerfile1.test"
   pull_request:
@@ -23,7 +23,7 @@ on:
       # - "/workflows/.devcontainer/Containerfile.*"
       # - "Containerfile"
       # - "Dockerfile.*"
-      # - "Dockerfile"
+      - "Dockerfile"
       - "Dockerfile.test"
       - ".github/workflows/Dockerfile1.test"
 
