@@ -6,22 +6,24 @@ on:
     branches:
       - "main"
     paths:
-      - "/.devcontainer/Containerfile"
-      - "/workflows/.devcontainer/Containerfile.*"
-      - "Containerfile"
-      - "Dockerfile.*"
-      - "Dockerfile"
-  pull_request:
-    branches:
-      - "main"
-    paths:
-      - ".devcontainer/Containerfile"
-      - ".devcontainer/Containerfile.*"
-      - "/.devcontainer/Containerfile*"
+      # - "/.devcontainer/Containerfile"
       # - "/workflows/.devcontainer/Containerfile.*"
       # - "Containerfile"
       # - "Dockerfile.*"
       # - "Dockerfile"
+      - "Dockerfile.test"
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      # - ".devcontainer/Containerfile"
+      # - ".devcontainer/Containerfile.*"
+      # - "/.devcontainer/Containerfile*"
+      # - "/workflows/.devcontainer/Containerfile.*"
+      # - "Containerfile"
+      # - "Dockerfile.*"
+      # - "Dockerfile"
+      - "Dockerfile.test"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -48,7 +50,7 @@ jobs:
 
       - uses: hadolint/hadolint-action@v2.1.0
         with:
-          dockerfile: Containerfile
+          dockerfile: Dockerfile.test
 
   # scan:
   #   needs: lint
