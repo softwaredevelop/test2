@@ -3,10 +3,14 @@ name: "CodeQL"
 on:
   push:
     branches: [main]
+    paths:
+      - "**.go"
   pull_request:
     branches: [main]
-  schedule:
-    - cron: "30 23 * * 3"
+    paths:
+      - "**.go"
+  # schedule:
+  #   - cron: "30 23 * * 3"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
