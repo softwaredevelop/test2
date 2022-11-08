@@ -52,6 +52,6 @@ jobs:
           VALIDATE_BASH_EXEC: true
           VALIDATE_BASH: true
           VALIDATE_EDITORCONFIG: true
-          # VALIDATE_GITHUB_ACTIONS: true
+          VALIDATE_GITHUB_ACTIONS: true
           VALIDATE_LATEX: true
           VALIDATE_NATURAL_LANGUAGE: true
