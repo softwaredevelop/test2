@@ -9,6 +9,10 @@ RUN apt-get update; \
     hello; \
     apt-get clean && rm -fr /var/lib/apt/lists/*
 
+COPY test.sh /tmp/
+
+RUN bash /tmp/test.sh
+
 EXPOSE 5050
 
 CMD [ "hello" ]
