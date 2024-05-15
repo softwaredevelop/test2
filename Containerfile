@@ -1,4 +1,4 @@
-ARG VARIANT=focal
+ARG VARIANT=noble
 FROM docker.io/library/ubuntu:$VARIANT
 
 RUN apt-get update \
