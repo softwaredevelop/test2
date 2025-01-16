@@ -46,7 +46,7 @@ jobs:
           fetch-depth: 0
 
       - name: Golang lint
-        uses: golangci/golangci-lint-action@v6.1.1
+        uses: golangci/golangci-lint-action@v6.2.0
         with:
           args: ./...
           github-token: ${{ secrets.GITHUB_TOKEN }}
